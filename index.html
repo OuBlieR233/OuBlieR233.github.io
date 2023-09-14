@@ -3,23 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>formatter</title>
+    <!-- code mirror -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- code mirror 支持的语言类型, 目前只需要 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js" integrity="sha512-I6CdJdruzGtvDyvdO4YsiAq+pkWf2efgd1ZUSK2FnM/u2VuRASPC7GowWQrWyjxCZn6CT89s3ddGI+be0Ak9Fg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        body {
-            display: flex;
+    <!-- code mirror 的主题, 也就是渲染样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/idea.min.css" integrity="sha512-N+NJU9LvDmlEQyb3xDkcXPOR8SDXQGx4kRs9wCi/U6GPfN/FSsfjIzY61Svd8eg4Y1VcbBL1XhuC3VzzQYmcJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <style>
+        html {
+            height: 100%;
         }
+        body {
+            height: 100%;
+            margin: 0;
+        }
+        #app {
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            font-family: Menlo, monospace;
+            font-size: 16px;
+        }
+
         #config-box {
-            background: #3c3f41;
-            min-width: 400px;
-            height: 600px;
-            overflow-y: auto;
+            flex-shrink: 0;
+            overflow: auto;
+            width: 400px;
             padding: 10px;
-            color: #b6b6b6;
-            font-family: monospace;
-            font-size: 14px;
             box-sizing: border-box;
+            color: #b6b6b6;
+            background: #3c3f41;
         }
         .gua-selector, .gua-input, .gua-wrap {
             margin: 8px 0;
@@ -68,57 +81,39 @@
         }
 
         #code-box {
-            display: flex;
-            padding: 0 10px;
-            height: 600px;
-            align-content: center;
-        }
-        pre {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            margin: 0 10px;
-            min-width: 400px;
-            height: 100%;
+            justify-content: space-between;
+            background: #f2f2f2;
         }
-        code {
-            height: 100%;
+        #id-button-format {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 auto;
+            cursor: pointer;
+            text-align: center;
         }
-        #to-arrow {
-            margin: auto;
+        .CodeMirror {
+            border: 1px solid black;
+            height: calc(50% - 25px);
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
+<div id="app">
     <div id="config-box"></div>
     <div id="code-box">
-        <pre>
-            <span>生成</span>
-            <textarea id="code-gen"></textarea>
-        </pre>
-        <div id="to-arrow"> <= </div>
-        <pre>
-            <span>原始</span>
-            <div id="code-src"></div>
-        </pre>
+        <textarea id="code-src" class="code"></textarea>
+        <div id="id-button-format">格式化</div>
+        <textarea id="code-gen" class="code"></textarea>
     </div>
-
-    <script type="text/javascript">
-        console.log('CodeMirror', CodeMirror)
-        let domCodeGen = document.querySelector('#code-gen')
-        let opsCodeGen = {
-            mode: "text/javascript",
-            theme: "neonsyntax",
-            lineWrapping: true,
-            lineNumbers: true,
-            styleActiveLine: true,
-            matchBrackets: true,
-            extraKeys: {
-                "Ctrl-Space": "autocomplete"
-            },
-        }
-        let editorGen = CodeMirror.fromTextArea(domCodeGen, opsCodeGen)
-    </script>
+</div>
     <script src="dist/bundle.js"></script>
 </body>
 </html>
