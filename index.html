@@ -12,12 +12,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/solarized.min.css" integrity="sha512-/fyHOMgAeLm/HB9+Z0TYk1kDPdEfFDhgw68SHIyok5rW/TGTdOOVPeR3N51bkUpjr2ycg2j9/18g7qsbtLW+ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/3024-night.min.css" integrity="sha512-SbB0juc9/nEA5PEN7S+lnglc7wADe2DLKZKXn3D+eyebL06fTbFHNzgMlpX9oqFjWEKZ6uH7zNCUSv+j9Dpwpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        @font-face {
+            font-family: defaultFont;
+            /*
+                local 的意思是先找用户本地字体 "Courier"
+                如果当前用户 (浏览器) 未安装该字体
+                就会用项目里给的的字体文件 "Courier.ttf" 来代替
+             */
+            src: local("Menlo"),
+            url(./font/Menlo.ttf);
+        }
+
         html {
             height: 100%;
         }
         body {
             height: 100%;
             margin: 0;
+            font-family: defaultFont, monospace;
         }
         #app {
             height: 100%;
