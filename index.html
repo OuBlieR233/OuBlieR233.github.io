@@ -9,7 +9,9 @@
     <!-- code mirror 支持的语言类型, 目前只需要 js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js" integrity="sha512-I6CdJdruzGtvDyvdO4YsiAq+pkWf2efgd1ZUSK2FnM/u2VuRASPC7GowWQrWyjxCZn6CT89s3ddGI+be0Ak9Fg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- code mirror 的主题, 也就是渲染样式 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/idea.min.css" integrity="sha512-N+NJU9LvDmlEQyb3xDkcXPOR8SDXQGx4kRs9wCi/U6GPfN/FSsfjIzY61Svd8eg4Y1VcbBL1XhuC3VzzQYmcJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/solarized.min.css" integrity="sha512-/fyHOMgAeLm/HB9+Z0TYk1kDPdEfFDhgw68SHIyok5rW/TGTdOOVPeR3N51bkUpjr2ycg2j9/18g7qsbtLW+ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/3024-night.min.css" integrity="sha512-SbB0juc9/nEA5PEN7S+lnglc7wADe2DLKZKXn3D+eyebL06fTbFHNzgMlpX9oqFjWEKZ6uH7zNCUSv+j9Dpwpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
         html {
             height: 100%;
         }
@@ -62,45 +64,37 @@
         .gua-wrap-label {
             display: flex;
             align-items: center;
+            position: relative;
+            left: 20px;
         }
-        .arrow-down {
+        .arrow {
+            left: -14px;
+            position: absolute;
             margin-right: 8px;
             width: 6px;
             height: 6px;
             border-top: 2px solid white;
             border-right: 2px solid white;
+        }
+        .down {
             transform: rotate(135deg);
         }
-        .arrow-right {
-            margin-right: 8px;
-            width: 6px;
-            height: 6px;
-            border-top: 2px solid white;
-            border-right: 2px solid white;
+        .right {
+            left: -16px;
             transform: rotate(45deg);
         }
 
         #code-box {
             width: 100%;
-            padding: 10px;
             box-sizing: border-box;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             background: #f2f2f2;
         }
-        #id-button-format {
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            margin: 0 auto;
-            cursor: pointer;
-            text-align: center;
-        }
         .CodeMirror {
-            border: 1px solid black;
-            height: calc(50% - 25px);
+            height: 100%;
             width: 100%;
+            margin: 0 0 0 10px;
         }
     </style>
 </head>
@@ -110,7 +104,6 @@
     <div id="config-box"></div>
     <div id="code-box">
         <textarea id="code-src" class="code"></textarea>
-        <div id="id-button-format">FORMAT</div>
         <textarea id="code-gen" class="code"></textarea>
     </div>
 </div>
