@@ -18,9 +18,9 @@
         @font-face {
             font-family: defaultFont;
             /*
-                local 的意思是先找用户本地字体 "Courier"
+                local 的意思是先找用户本地字体 "Menlo"
                 如果当前用户 (浏览器) 未安装该字体
-                就会用项目里给的的字体文件 "Courier.ttf" 来代替
+                就会用项目里给的的字体文件 "Menlo.ttf" 来代替
              */
             src: local("Menlo"),
             url(./font/Menlo.ttf);
@@ -32,13 +32,12 @@
         body {
             height: 100%;
             margin: 0;
-            font-family: defaultFont, monospace;
+            font-family: defaultFont, monospace, Courier;
         }
         #app {
             height: 100%;
             display: flex;
             justify-content: flex-start;
-            font-family: Menlo, monospace;
             font-size: 16px;
         }
 
@@ -60,12 +59,14 @@
         }
         .gua-selector > select, .gua-input > input {
             width: 100px;
+            height: 24px;
             box-sizing: border-box;
         }
         .checkbox {
             margin: 6px 0;
             display: flex;
             align-content: center;
+            padding: 0 0 0 2px;
         }
         .hide {
             display: none;
@@ -75,6 +76,10 @@
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            cursor: pointer;
+        }
+        .checkbox > label {
+            margin-left: 5px;
         }
         .gua-wrap-label {
             display: flex;
