@@ -11,6 +11,9 @@
     <!-- code mirror 的主题, 也就是渲染样式 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/solarized.min.css" integrity="sha512-/fyHOMgAeLm/HB9+Z0TYk1kDPdEfFDhgw68SHIyok5rW/TGTdOOVPeR3N51bkUpjr2ycg2j9/18g7qsbtLW+ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/3024-night.min.css" integrity="sha512-SbB0juc9/nEA5PEN7S+lnglc7wADe2DLKZKXn3D+eyebL06fTbFHNzgMlpX9oqFjWEKZ6uH7zNCUSv+j9Dpwpw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap, 用来增加报错提示 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @font-face {
             font-family: defaultFont;
@@ -108,17 +111,25 @@
             width: 100%;
             margin: 0 0 0 10px;
         }
+
+        #id-tips {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translate(-50%);
+        }
     </style>
 </head>
 
 <body>
-<div id="app">
-    <div id="config-box"></div>
-    <div id="code-box">
-        <textarea id="code-src" class="code"></textarea>
-        <textarea id="code-gen" class="code"></textarea>
+    <div id="app">
+        <div id="config-box"></div>
+        <div id="code-box">
+            <textarea id="code-src" class="code"></textarea>
+            <textarea id="code-gen" class="code"></textarea>
+        </div>
     </div>
-</div>
+    <div id="id-tips"></div>
     <script src="dist/bundle.js"></script>
 </body>
 </html>
