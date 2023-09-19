@@ -19,7 +19,7 @@
             font-family: defaultFont;
             /*
                 local 的意思是先找用户本地字体 "Menlo"
-                如果当前用户 (浏览器) 未安装该字体
+                如果当前系统未安装该字体
                 就会用项目里给的的字体文件 "Menlo.ttf" 来代替
              */
             src: local("Menlo"),
@@ -32,7 +32,9 @@
         body {
             height: 100%;
             margin: 0;
-            font-family: defaultFont, monospace, Courier;
+            /* monospace 作为 mac 的 generic font */
+            /* Consolas 作为 win 的 generic font */
+            font-family: defaultFont, monospace, Consolas;
         }
         #app {
             height: 100%;
